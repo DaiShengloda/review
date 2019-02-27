@@ -46,8 +46,8 @@ export default {
   },
   data(){
   	return {
-  		pdfUrl:"http://file.dakawengu.com/file/2018-05-29/20180527-tianfeng.pdf",
-      // pdfUrl:'./static/password.pdf',
+  		pdfUrl:"./static/pdf/p1.pdf",
+      // pdfUrl:'./static/pdf/password.pdf',
   		pageNum:1,
       pageTotalNum:1,
       pageRotate:0,

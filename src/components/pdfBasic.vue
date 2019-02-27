@@ -25,19 +25,19 @@ export default {
   	return {
       pdfList:[
         {
-          pdfUrl:"https://dakaname.oss-cn-hangzhou.aliyuncs.com/file/2018-12-29/1546049718768.pdf",
+          pdfUrl:"./static/pdf/b1.pdf",
           title:"你好，2019年"
         },
         {
-          pdfUrl:"http://file.gp58.com/file/2018-11-14/111405.pdf",
+          pdfUrl:"./static/pdf/b2.pdf",
           title:"中信证券观点"
         },
         {
-          pdfUrl:"https://dakaname.oss-cn-hangzhou.aliyuncs.com/file/2018-12-28/1546003237411.pdf",
+          pdfUrl:"./static/pdf/b3.pdf",
           title:"12月投资月刊"
         },
         {
-          pdfUrl:"https://dakaname.oss-cn-hangzhou.aliyuncs.com/file/2018-12-28/1546003282521.pdf",
+          pdfUrl:"./static/pdf/b4.pdf",
           title:"丰岭资本观点"
         },
       ],
