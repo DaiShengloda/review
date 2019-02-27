@@ -21,7 +21,7 @@
       @click.stop="pdfPrint">部分打印</div>
   </div>
   <div class="pdf-total">{{pageNum}}/{{pageTotalNum}}</div>
-  <div class="pdf-process">进度：{{loadedRatio}}</div>
+  <div class="pdf-process">进度：{{loadedRatio|fixedTwo}}</div>
   <div class="pdf-num">页面加载成功: {{curPageNum}}</div>
   <pdf 
     ref="pdf"

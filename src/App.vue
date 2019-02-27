@@ -12,6 +12,7 @@ export default {
 </script>
 
 <style lang='scss'>
+@import './sass/_function.scss';
 body {
   margin: 0;
 }
