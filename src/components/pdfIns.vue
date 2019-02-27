@@ -2,7 +2,6 @@
 /**
  * vue-pdf
  * 文档：https://www.npmjs.com/package/vue-pdf
- */
 一、安装
 npm install --save vue-pdf
 
@@ -52,4 +51,5 @@ print(dpi, pageList)
 createLoadingTask(src)
 ##这个方法创建一个当前pdf的加载任务，可以作为:src使用或者公开的获取当前pdf的页面总数；
 ##src传入pdf链接；
+ */
 </script>

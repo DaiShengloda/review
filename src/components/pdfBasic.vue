@@ -69,26 +69,29 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import '../sass/_function.scss';
 .pdf-tab{
   display: flex;
   flex-wrap: wrap;
-}
-.pdf-tab .btn-def{
-  border-radius: 10px;
-  font-size: 18px;
-  height: 35px;
-  width: 40%;
-  background: #fff;
-  color: #000;
-  border: 1px solid #409eff;
-  line-height: 35px;
-  margin-right: 8%;
-  margin-bottom: 10px;
-}
-.pdf-tab .btn-active{
-  background: #409eff;
-  color: #fff;
-  border: 1px solid #409eff;
+  padding: r(30) r(30) 0 r(30);
+  justify-content: space-between;
+  .btn-def{
+    border-radius: r(15);
+    font-size: r(36);
+    height: r(70);
+    width: r(280);
+    text-align: center;
+    background: #fff;
+    color: #000;
+    border: 1px solid #409eff;
+    line-height: r(70);
+    margin-bottom: r(20);
+  }
+  .btn-active{
+    background: #409eff;
+    color: #fff;
+    border: 1px solid #409eff;
+  }
 }
 </style>

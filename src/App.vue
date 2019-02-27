@@ -11,12 +11,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang='scss'>
+body {
+  margin: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  width: 100%;
+  max-width: r(850);
+  margin: 0 auto;
+  overflow: hidden;
+  min-height: 100vh;
+  background: #efeff5;
 }
 </style>

@@ -20,9 +20,9 @@
       class="btn-def"
       @click.stop="pdfPrint">部分打印</div>
   </div>
-  <div>{{pageNum}}/{{pageTotalNum}}</div>
-  <div>进度：{{loadedRatio}}</div>
-  <div>页面加载成功: {{curPageNum}}</div>
+  <div class="pdf-total">{{pageNum}}/{{pageTotalNum}}</div>
+  <div class="pdf-process">进度：{{loadedRatio}}</div>
+  <div class="pdf-num">页面加载成功: {{curPageNum}}</div>
   <pdf 
     ref="pdf"
     :src="pdfUrl"
@@ -46,8 +46,8 @@ export default {
   },
   data(){
   	return {
-  		// pdfUrl:"http://file.dakawengu.com/file/2018-05-29/20180527-tianfeng.pdf",
-      pdfUrl:'./static/password.pdf',
+  		pdfUrl:"http://file.dakawengu.com/file/2018-05-29/20180527-tianfeng.pdf",
+      // pdfUrl:'./static/password.pdf',
   		pageNum:1,
       pageTotalNum:1,
       pageRotate:0,
@@ -96,20 +96,37 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import '../sass/_function.scss';
 .pdf-tab{
   display: flex;
   flex-wrap: wrap;
+  padding: 0 r(30);
+  justify-content: space-between;
+  .btn-def{
+    border-radius: r(15);
+    font-size: r(36);
+    height: r(70);
+    width: r(180);
+    text-align: center;
+    line-height: r(70);
+    background: #409eff;
+    color: #fff;
+    margin-bottom: r(20);
+  }
 }
-.pdf-tab .btn-def{
-  border-radius: 10px;
-  font-size: 18px;
-  height: 35px;
-  width: 80px;
-  background: #409eff;
-  color: #fff;
-  line-height: 35px;
-  margin-right: 30px;
-  margin-bottom: 10px;
+.pdf-total{
+  text-align: center;
+  font-size: r(34);
+
+}
+.pdf-process{
+  text-align: center;
+  font-size: r(34);
+}
+.pdf-num{
+  text-align: center;
+  font-size: r(34);
+  margin-bottom: r(15);
 }
 </style>
