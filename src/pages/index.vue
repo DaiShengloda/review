@@ -17,8 +17,6 @@ export default {
     return {
       listData:[
         {listName:'1.Vue-Pdf插件',listLink:'/pdf'},
-        {listName:'1.Vue-Pdf插件',listLink:'/pdf'},
-        {listName:'1.Vue-Pdf插件',listLink:'/pdf'},
       ]
     }
   },
