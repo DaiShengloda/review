@@ -16,7 +16,8 @@ export default {
   data() {
     return {
       listData:[
-        {listName:'1.Vue-Pdf插件',listLink:'/pdf'},
+        {listName:'1、Vue-Pdf插件',listLink:'/pdf'},
+        {listName:'2、Vue自定义日历组件',listLink:'/calendar'},
       ]
     }
   },

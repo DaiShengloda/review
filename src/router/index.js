@@ -3,9 +3,9 @@ import Router from 'vue-router'
 import Index from '@/pages/Index'
 import Pdf from '@/components/Pdf'
 import PdfBasic from '@/components/PdfBasic'
+import CalIns from '@/pages/CalIns'
 
 Vue.use(Router)
-
 export default new Router({
   routes: [
     {
@@ -22,6 +22,11 @@ export default new Router({
       path: '/pdfBasic',
       name: 'Pdf',
       component: PdfBasic
+    },
+    {
+      path: '/calendar',
+      name: 'CalIns',
+      component: CalIns
     },
   ]
 })

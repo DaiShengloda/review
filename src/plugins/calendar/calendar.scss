@@ -1,0 +1,162 @@
+.calendar {
+  max-width: r(850);
+  margin: auto;
+  .calendar_type {
+    width: 100%;
+    overflow: hidden;
+    /*日历头部*/
+    .calendar_header {
+      display: flex;
+      background: #b79448;
+      li {
+        cursor: pointer;
+        display: flex;
+        color: #fff;
+        font-size: r(36);
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        height: r(80);
+      }
+      .header_mid {
+        cursor: auto;
+        flex: 2.5;
+      }
+      .header_lef {
+        width: 12px;
+        height: 12px;
+        border-top: 2px solid #ffffff;
+        border-left: 2px solid #ffffff;
+        transform: rotate(-45deg);
+      }
+
+      .header_lef:active,
+      .header_rig:active {
+        border-color: #ddd;
+      }
+
+      .header_rig {
+        width: 12px;
+        height: 12px;
+        border-top: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+        transform: rotate(45deg);
+      }
+    }
+    /*日历星期*/
+    .calendar_week {
+      background: #ead29d;
+      height: r(50);
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 3% 0 3%;
+      width: 100%;
+      .week_day {
+        width: 13.4%;
+        height: r(50);
+        line-height: r(50);
+        font-size: r(28);
+        color: #97711f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+      }    
+    }
+    /*日历天*/
+    .calendar_body {   
+      .body_row{
+        background: #fdf9f0;
+        padding: 0 3% 0 3%;
+        height: r(100);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        color: #000;
+        .row_item {
+          height: r(72);
+          width: 13.4%;
+          .item_time {
+            width: r(72);
+            height: r(72);
+            font-size: r(28);
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .item_other_dayhide {
+            color: #b79448;
+          }
+          .item_want_dayhide {
+            color: #b79448;
+          }
+          .item_isToday {
+            border-radius: 50%;
+            color: #b79448;
+            border: 1px solid #b79448;
+            background: #fff;
+          }
+          .item_chose_day {
+            background: #b79448;
+            border-radius: 50%;
+            color: #fff;
+          }
+        }
+      }
+      .even {
+        background: #fff;
+      }
+    }
+  }
+  li {
+    list-style-type: none;
+  }
+}
+/*简易版样式*/
+.cal_common{
+  .calendar_type{
+    .calendar_header{
+      background: #fff;   
+      .header_mid{
+        color: #000;
+      }
+      .header_lef {
+        width: 12px;
+        height: 12px;
+        border-top: 2px solid #000000;
+        border-left: 2px solid #000000;
+        transform: rotate(-45deg);
+      }
+      .header_lef:active,
+      .header_rig:active {
+        border-color: #ddd;
+      }
+      .header_rig {
+        width: 12px;
+        height: 12px;
+        border-top: 2px solid #000000;
+        border-right: 2px solid #000000;
+        transform: rotate(45deg);
+      }
+    }
+    .calendar_week{
+      background: #fff; 
+      .week_day{
+        color: #000;
+        font-weight: normal;
+      }
+    }
+    .calendar_body{
+      .body_row{
+        background: #fff;
+        .row_item{
+          .item_time{
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
