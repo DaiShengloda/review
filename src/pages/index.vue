@@ -1,8 +1,8 @@
 <template>
   <div class="index">
-    <div class="dex_user">
+    <!-- <div class="dex_user">
       <img class="user_icon" src="../assets/images/userIcon.jpg"/>
-    </div>
+    </div> -->
     <div class="list">
       <div 
         class="li"
