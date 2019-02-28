@@ -1,5 +1,8 @@
 <template>
   <div class="index">
+    <div class="dex_user">
+      <img class="user_icon" src="../assets/images/userIcon.jpg"/>
+    </div>
     <div class="list">
       <div 
         class="li"
@@ -34,6 +37,19 @@ export default {
   padding: 0 r(30);
   background: #282c34;
   min-height: 100vh;
+  .dex_user{
+    height: r(300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: r(80);
+    .user_icon{
+      width: r(200);
+      height: r(200);
+      display: block;
+      border-radius: 50%;
+    }
+  }
   .list{
     font-size: r(36);
     color: #41b883;

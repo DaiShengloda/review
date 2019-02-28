@@ -5,7 +5,7 @@
     position: fixed;
     max-width: r(850);
     width: 100%;
-    top: r(650);
+    top: r(700);
   }
   .cal-time{
     width: 100%;
