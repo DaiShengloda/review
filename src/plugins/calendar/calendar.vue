@@ -37,7 +37,7 @@
                 {'item_other_dayhide':item.otherMonth!=='nowMonth'},
                 {'item_want_dayhide':item.dayHide},
                 {'item_isToday':item.isToday},
-                {'item_chose_day':item.chooseDay}]">
+                {'item_chose_day':item.chooseDay},setClass(item)]">
               {{item.id}}
             </div>
           </div>
@@ -112,23 +112,29 @@ export default {
     },
   },
   props: {
+    // 标记的日期
     markDate: {
       type: Array,
       default: () => []
     },
-    markDateMore: {
+    // 定义标记的日期及className
+    markDateClass: {
       type: Array,
       default: () => []
     },
+    // 是否星期天开始
     sundayStart: {
       type: Boolean,
-      default: () => false
+      default: () => true
     },
-    agoDayHide: { type: String, default: `0` },
-    futureDayHide: { type: String, default: `2554387200` },
+    // 某个如期前不允许点击
+    agoDayPrevent: { type: String, default: `0` },
+    // 某个如期后不允许点击
+    futureDayPrevent: { type: String, default: `2554387200` },
+    // 日历classname
     calendarClass: {
       type: String,
-      default: 'calendar_d'
+      default: ''
     },
     // 日历类型：1--默认、2--简易模式
     calendarType: {
@@ -158,10 +164,10 @@ export default {
       return obj;
     },
     clickDay: function (item, index) {
-      var isFuther = item.isFuther
-      if(isFuther&&this.calendarType==1){
-        return
-      }
+      // var isFuther = item.isFuther
+      // if(isFuther&&this.calendarType==1){
+      //   return
+      // }
       if (item.otherMonth === 'nowMonth' && !item.dayHide) {
         this.getList(this.myDate, item.date);
       }
@@ -203,18 +209,18 @@ export default {
     },
     forMatArgs: function () {
       let markDate = this.markDate;
-      let markDateMore = this.markDateMore;
+      let markDateClass = this.markDateClass;
       markDate = markDate.map((k) => {
         return timeUtil.dateFormat(k);
       })
-      markDateMore = markDateMore.map((k) => {
+      markDateClass = markDateClass.map((k) => {
         k.date = timeUtil.dateFormat(k.date)
         return k;
       })
-      return [markDate, markDateMore];
+      return [markDate, markDateClass];
     },
     getList: function (date, chooseDay, isChosedDay = true) {
-      const [markDate, markDateMore] = this.forMatArgs();
+      const [markDate, markDateClass] = this.forMatArgs();
       this.dateTop = `${date.getFullYear()}年${date.getMonth() + 1}月`;
       let arr = timeUtil.getMonthList(this.myDate);
       for (let i = 0; i < arr.length; i++) {
@@ -224,7 +230,7 @@ export default {
         const nowTime = k.date;
         const t = new Date(nowTime).getTime() / 1000;
         //看每一天的class
-        for (const c of markDateMore) {
+        for (const c of markDateClass) {
           if (c.date === nowTime) {
             markClassName = c.className || '';
           }
@@ -233,11 +239,7 @@ export default {
         k.markClassName = markClassName;
         k.isMark = markDate.indexOf(nowTime) > -1;
         //无法选中某天
-        k.dayHide = t < this.agoDayHide || t > this.futureDayHide;
-        if (k.isToday) {
-          this.toDayRow = Math.floor(i/7)
-          this.$emit('isToday', nowTime)
-        }
+        k.dayHide = t < this.agoDayPrevent || t > this.futureDayPrevent;
         let flag = !k.dayHide && k.otherMonth === 'nowMonth';
         if (chooseDay && chooseDay === nowTime && flag) {
           this.$emit('choseDay', nowTime)

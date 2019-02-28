@@ -15,6 +15,7 @@ export default {
 @import './sass/_function.scss';
 body {
   margin: 0;
+  background: #efeff5;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
