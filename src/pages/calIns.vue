@@ -1,11 +1,14 @@
 <style lang="scss" scoped>
 @import '../sass/_function.scss';
 .calIns{
-  .cal-time{
+  .cal-content{
     position: fixed;
     max-width: r(850);
     width: 100%;
-    bottom: r(450);
+    top: r(650);
+  }
+  .cal-time{
+    width: 100%;
     font-size: r(34);
     text-align: center;
     margin-top: r(50);
@@ -14,10 +17,33 @@
       font-size: r(36);
     }
   }
+  .cal-pre {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: r(80);
+    padding: 0 r(30);
+    .pre-txt{
+      font-size: r(30);
+    }
+    .pre-time{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .time-type{
+        input{
+          width: 3em;
+          text-align: center;
+        }
+      }
+    }
+    .pre-btn{
+      margin: 0;
+      padding: 0 r(8);
+    }
+  }
   .cal-mark{
     font-size: r(36);
-    position: fixed;
-    max-width: r(850);
     width: 100%;
     bottom: r(380);
     color: #e93030;
@@ -68,11 +94,52 @@
       :sundayStart="true"
       :calendarType="2"
       :markDate="markDate"
+      :markDateClass="markDateClass"
+      :agoDayPrevent="agoDayPrevent"
+      :futureDayPrevent="futureDayPrevent"
       :calendarClass="calendarClass">
     </Calendar>
   </div>
-  <div class="cal-time">选中日期：<span class="time-msg">{{chooseDate}}</span></div>
-  <div class="cal-mark">标记当前日期前后两天</div>
+  <div class="cal-content">
+    <div class="cal-time">选中日期：<span class="time-msg">{{chooseDate}}</span></div>
+    <div class="cal-pre">
+      <div class="pre-txt">该日期前不可点：</div>
+      <div class="pre-time">
+        <div class="time-type">
+          <input type="number" v-model="agoTimeYear">年
+        </div>
+        <div class="time-type">
+          <input type="number" v-model="agoTimeMonth">月
+        </div>
+        <div class="time-type">
+          <input type="number" v-model="agoTimeDay">日
+        </div>
+      </div>
+      <button 
+        class="pre-btn"
+        @click.stop="agoClick">确定</button>
+    </div>
+    <div class="cal-future">
+      <div class="cal-pre">
+      <div class="pre-txt">该日期后不可点：</div>
+      <div class="pre-time">
+        <div class="time-type">
+          <input type="number" v-model="futureTimeYear">年
+        </div>
+        <div class="time-type">
+          <input type="number" v-model="futureTimeMonth">月
+        </div>
+        <div class="time-type">
+          <input type="number" v-model="futureTimeDay">日
+        </div>
+      </div>
+      <button 
+        class="pre-btn"
+        @click.stop="futureClick">确定</button>
+    </div>
+    </div>
+    <div class="cal-mark">标记当天前后两天</div>
+  </div>
   <div class="cal-tab">
   	<div 
       :class="['tab-btn',{'tab-active': showCalendar==1}]" 
@@ -102,6 +169,12 @@ export default {
       ],
       agoDayPrevent: '0',
       futureDayPrevent: '2551024000',
+      agoTimeYear: null,
+      agoTimeMonth: null,
+      agoTimeDay: null,
+      futureTimeYear: null,
+      futureTimeMonth: null,
+      futureTimeDay: null,
   	}
   },
   created() {
@@ -132,6 +205,29 @@ export default {
     },
     changeMonth(date) {
       console.log('changeMonth'+date)
+    },
+    agoClick(){
+      var timeStatus = this.checkTime(this.agoTimeYear,this.agoTimeMonth,this.agoTimeDay)
+      if(!timeStatus)alert('请输入正确日期')
+      this.agoDayPrevent = this.dateToStamp(this.agoTimeYear,this.agoTimeMonth,this.agoTimeDay)
+      this.$forceUpdate()
+    },
+    futureClick(){
+      var timeStatus = this.checkTime(this.futureTimeYear,this.futureTimeMonth,this.futureTimeDay)
+      if(!timeStatus)alert('请输入正确日期')
+      this.futureDayPrevent = this.dateToStamp(this.futureTimeYear,this.futureTimeMonth,this.futureTimeDay)
+      this.$forceUpdate()
+    },
+    checkTime(year, month, day){
+      if(!year)return false
+      if(!month||month>12||month<1)return false
+      if(!day||day>31||day<1)return false
+      return true
+    },
+    dateToStamp(year, month, day) {
+      var date = new Date(year+'/'+month+'/'+day)
+      var stamp = Date.parse(date)/1000
+      return stamp+''
     }
   }
 }

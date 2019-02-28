@@ -142,6 +142,24 @@ export default {
       default: 1
     },
   },
+  watch: {
+    markDate(val, oldVal) {
+      this.getList(this.myDate)
+    },
+    markDateClass(val, oldVal) {
+      this.getList(this.myDate)
+    },
+    agoDayPrevent(val, oldVal) {
+      this.getList(this.myDate)
+    },
+    futureDayPrevent(val, oldVal) {
+      this.getList(this.myDate)
+    },
+    sundayStart(val, oldVal) {
+      this.intStart()
+      this.getList(this.myDate)
+    }
+  },
   created() {
     this.intStart();
     this.myDate = new Date();
